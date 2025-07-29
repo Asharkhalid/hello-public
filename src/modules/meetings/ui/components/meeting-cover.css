@@ -1,0 +1,93 @@
+.meeting-book-item {
+  perspective: 1000px;
+  width: 130px;
+  height: 195px;
+}
+
+.meeting-book-item.large {
+  width: 200px;
+  height: 300px;
+}
+
+.meeting-book-cover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-25deg);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  border-radius: 4px 8px 8px 4px;
+}
+
+.meeting-book-item:hover .meeting-book-cover {
+  transform: rotateY(0deg);
+}
+
+.meeting-book-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fdfaf2;
+  border-radius: 4px 8px 8px 4px;
+  transform-origin: left;
+  transform: rotateY(0deg) translateZ(-8px) scaleX(1);
+  box-shadow: 
+    inset 4px 0 8px -2px rgba(0, 0, 0, 0.1),
+    -2px 0 2px -1px rgba(0,0,0,0.1),
+    -4px 0 4px -2px rgba(0,0,0,0.1),
+    -6px 0 6px -3px rgba(0,0,0,0.1);
+}
+
+.meeting-book-cover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 8px;
+  height: calc(100% - 2px);
+  background: linear-gradient(to right, #e0d7c1, #fdfaf2);
+  transform-origin: left;
+  transform: rotateY(0deg) translateZ(-8px);
+  border-radius: 0;
+}
+
+.meeting-book-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(0deg) translateZ(8px);
+  border-radius: 4px 8px 8px 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.meeting-book-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 70%);
+  transform: translateX(-150%);
+  transition: transform 0.7s ease;
+  border-radius: 4px 8px 8px 4px;
+}
+
+.meeting-book-item:hover .meeting-book-light {
+  transform: translateX(150%);
+}
+
+.meeting-book-glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.1));
+  border-radius: 6px 10px 10px 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.meeting-book-item:hover .meeting-book-glow {
+  opacity: 1;
+}
